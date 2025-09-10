@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF‑8">
+  <meta name="viewport" content="width=device‑width, initial-scale=1.0">
+  <title>SEO Practice Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #2c3e50; color: #ecf0f1; padding: 1em; text-align: center; }
+    section { padding: 1em; border-bottom: 1px solid #ddd; }
+    h2 { color: #2980b9; }
+    iframe { width: 100%; height: 400px; border: 1px solid #ccc; }
+    .inline-tool { margin-bottom: 1em; }
+    .short-link { margin-top: 0.5em; display: inline-block; text-decoration: none; color: #2980b9; }
+    .note { font-size: 0.9em; color: #555; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SEO Practice Dashboard</h1>
+    <p>Your go-to toolkit for keyword research, backlink analysis, schema & meta‑checks.</p>
+  </header>
+
+  <!-- Keyword Research -->
+  <section id="keyword-research">
+    <h2>Keyword Research</h2>
+    <div class="inline-tool">
+      <iframe src="https://www.metricbuzz.com/more-webmaster-tools/tool.php?id=generate-keywords&embed=5"></iframe>
+    </div>
+    <a class="short-link" href="https://www.metricbuzz.com/more-webmaster-tools.html" target="_blank">Open Keyword Tool in Google</a>
+  </section>
+
+  <!-- Backlink Analysis -->
+  <section id="backlink-analysis">
+    <h2>Backlink Analysis</h2>
+    <div class="inline-tool">
+      <iframe src="https://www.metricbuzz.com/more-webmaster-tools/tool.php?id=check-backlinks&embed=5"></iframe>
+    </div>
+    <a class="short-link" href="https://www.metricbuzz.com/more-webmaster-tools.html" target="_blank">Open Backlink Tool in Google</a>
+  </section>
+
+  <!-- Schema Validation -->
+  <section id="schema-validation">
+    <h2>Schema Validator</h2>
+    <div class="inline-tool">
+      <iframe src="https://search.google.com/structured-data/testing-tool" style="height:600px;"></iframe>
+    </div>
+    <a class="short-link" href="https://search.google.com/structured-data/testing-tool/u/0/" target="_blank">Go to Google Structured Data Testing</a>
+  </section>
+
+  <!-- Meta Title Length Check -->
+  <section id="meta-title-check">
+    <h2>Meta Title Length Checker</h2>
+    <p class="note">Paste your meta title below and see if it fits within 50–60 characters.</p>
+    <input type="text" id="meta-title" placeholder="Enter Meta Title here" style="width: 100%; padding: 0.5em;">
+    <p id="title-count" style="font-weight: bold;">Length: 0</p>
+    <script>
+      const input = document.getElementById('meta-title');
+      const output = document.getElementById('title-count');
+      input.addEventListener('input', () => {
+        const len = input.value.length;
+        output.textContent = 'Length: ' + len + ' characters';
+        output.style.color = (len >= 50 && len <= 60) ? 'green' : 'red';
+      });
+    </script>
+    <a class="short-link" href="https://www.google.com/search?q=meta+title+length+check" target="_blank">Search Meta Title Length on Google</a>
+  </section>
+
+  <!-- FAQ Schema Generator -->
+  <section id="faq-schema-generator">
+    <h2>FAQ Schema Generator</h2>
+    <p class="note">Enter question & answer to generate JSON‑LD code for FAQ schema.</p>
+    <input type="text" id="faq-question" placeholder="Enter Question" style="width:100%;padding:0.5em;">
+    <textarea id="faq-answer" placeholder="Enter Answer" style="width:100%;padding:0.5em;margin-top:0.5em;" rows="4"></textarea>
+    <button id="faq-generate" style="margin-top:0.5em;padding:0.5em;">Generate FAQ Schema JSON‑LD</button>
+    <pre id="faq-output" style="background:#f4f4f4;padding:1em;margin-top:0.5em;"></pre>
+    <script>
+      document.getElementById('faq-generate').addEventListener('click', () => {
+        const q = document.getElementById('faq-question').value;
+        const a = document.getElementById('faq-answer').value;
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [{
+            "@type": "Question",
+            "name": q,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": a
+            }
+          }]
+        };
+        document.getElementById('faq-output').textContent = JSON.stringify(schema, null, 2);
+      });
+    </script>
+    <a class="short-link" href="https://www.google.com/search?q=faq+schema+generator" target="_blank">Search FAQ Schema on Google</a>
+  </section>
+
+  <footer style="padding:1em;text-align:center;color:#666;">
+    <p>SEO Practice Dashboard · Powered by embedded tools. Use responsibly and check Google tools as needed.</p>
+  </footer>
+</body>
+</html>
